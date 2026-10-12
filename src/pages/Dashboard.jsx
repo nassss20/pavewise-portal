@@ -269,7 +269,7 @@ export default function Dashboard() {
         {/* Table Content */}
         <div className="overflow-x-auto overflow-y-auto max-h-[600px] relative">
           {activeTab === 'registry' ? (
-            <table className="w-full min-w-[1300px] text-left border-collapse">
+              <table className="w-full min-w-[1300px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 text-[11px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider sticky top-0 z-20 shadow-xs">
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 w-12 text-center">No.</th>

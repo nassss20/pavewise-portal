@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { X, Calendar, DollarSign, TrendingUp, Layers, CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { X } from 'lucide-react';
 import AiLifespanPredictor from './AiLifespanPredictor';
 
 const LCCA_SCHEDULE_DATA = {
@@ -320,11 +320,16 @@ const LCCA_SCHEDULE_DATA = {
 };
 
 export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
-  if (!isOpen || !alternativeKey) return null;
+  const [selectedAssetIdx, setSelectedAssetIdx] = useState(0);
+
+  useEffect(() => {
+    setSelectedAssetIdx(0);
+  }, [alternativeKey]);
 
   const data = LCCA_SCHEDULE_DATA[alternativeKey] || LCCA_SCHEDULE_DATA.SFM;
-  const [selectedAssetIdx, setSelectedAssetIdx] = useState(0);
   const currentAsset = data.assets[selectedAssetIdx] || data.assets[0];
+
+  if (!isOpen || !alternativeKey) return null;
 
   const formatCurrency = (val) => {
     return `RM ${val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
