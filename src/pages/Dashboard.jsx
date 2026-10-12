@@ -160,14 +160,7 @@ export default function Dashboard() {
     <div className="space-y-8 animate-fade-in">
 
       {/* Header Actions */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              Dashboard
-            </h1>
-          </div>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4">
         <button
           onClick={handleAdd}
           className="flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-cyan-500/25 border border-cyan-400/20 hover:scale-[1.02] active:scale-[0.98] text-xs sm:text-sm"
@@ -181,14 +174,6 @@ export default function Dashboard() {
 
       {/* ArcGIS Map Embedded */}
       <div className="glass-panel rounded-2xl shadow-xl overflow-hidden border border-slate-200/80 dark:border-slate-800/80">
-        <div className="p-4 border-b border-slate-200/80 dark:border-slate-800/80 flex items-center justify-between bg-slate-50/80 dark:bg-slate-950/80">
-          <div className="flex items-center gap-2.5">
-            <div className="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
-              <MapIcon size={18} />
-            </div>
-            <h2 className="font-semibold text-slate-800 dark:text-slate-200 text-sm sm:text-base">GIS Road Layer Visualization</h2>
-          </div>
-        </div>
         <div className="h-[550px] w-full relative">
           <iframe
             src="https://geouitm.maps.arcgis.com/apps/dashboards/a39283d010a0452ca27094d5cd3caffa#"
@@ -209,19 +194,19 @@ export default function Dashboard() {
           <div className="flex p-1 bg-slate-200/70 dark:bg-slate-800/70 rounded-xl self-start overflow-x-auto max-w-full">
             <button
               onClick={() => setActiveTab('registry')}
-              className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${activeTab === 'registry' ? 'bg-white dark:bg-slate-700 shadow-md text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+              className={`font-noto-sans px-4 py-2 rounded-lg text-[13px] font-semibold transition-all whitespace-nowrap ${activeTab === 'registry' ? 'bg-white dark:bg-slate-700 shadow-md text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
             >
               Road Project Registry
             </button>
             <button
               onClick={() => setActiveTab('lcca')}
-              className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${activeTab === 'lcca' ? 'bg-white dark:bg-slate-700 shadow-md text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
+              className={`font-noto-sans px-4 py-2 rounded-lg text-[13px] font-semibold transition-all whitespace-nowrap ${activeTab === 'lcca' ? 'bg-white dark:bg-slate-700 shadow-md text-cyan-600 dark:text-cyan-400' : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'}`}
             >
               Life Cycle Cost Analysis (LCCA)
             </button>
             <button
               onClick={() => setIsMaintPopUpModalOpen(true)}
-              className="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50"
+              className="font-noto-sans px-4 py-2 rounded-lg text-[13px] font-semibold transition-all whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50"
             >
               Maintenance Activity
             </button>
@@ -269,14 +254,14 @@ export default function Dashboard() {
         {/* Table Content */}
         <div className="overflow-x-auto overflow-y-auto max-h-[600px] relative">
           {activeTab === 'registry' ? (
-              <table className="w-full min-w-[1300px] text-left border-collapse">
+              <table className="font-noto-sans w-full min-w-[1300px] text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 text-[11px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider sticky top-0 z-20 shadow-xs">
+                <tr className="bg-slate-100 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 text-[13px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider sticky top-0 z-20 shadow-xs">
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 w-12 text-center">No.</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[170px]">Road Name</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[100px]">Route No</th>
-                  <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[90px]">Dari (KM)</th>
-                  <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[90px]">Ke (KM)</th>
+                  <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[90px]">From (KM)</th>
+                  <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[90px]">To (KM)</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[100px]">Length</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[130px] text-center">Pavement Mix</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[160px]">Work Type</th>
@@ -287,7 +272,7 @@ export default function Dashboard() {
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 text-right sticky right-0 z-30 min-w-[100px] border-l border-slate-200 dark:border-slate-800">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-sm">
+              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-[15px]">
                 {loading ? (
                   <tr><td colSpan="13" className="px-4 py-12 text-center text-slate-400">Loading road network registry...</td></tr>
                 ) : filteredProjects.length === 0 ? (
@@ -297,14 +282,14 @@ export default function Dashboard() {
                     const calculatedLength = p.length_km || (p.start_km !== undefined && p.end_km !== undefined ? Math.abs((parseFloat(p.end_km) || 0) - (parseFloat(p.start_km) || 0)).toFixed(2) : '-');
                     return (
                       <tr key={p.id} className="hover:bg-slate-100/50 dark:hover:bg-slate-800/40 transition-colors">
-                        <td className="px-4 py-3 text-slate-400 text-xs font-mono text-center font-bold">{index + 1}</td>
+                        <td className="px-4 py-3 text-slate-400 text-xs text-center font-bold">{index + 1}</td>
                         <td className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100 whitespace-nowrap">{p.road_name}</td>
                         <td className="px-4 py-3 whitespace-nowrap">
-                          <span className="px-2 py-0.5 rounded-md bg-slate-200/60 dark:bg-slate-800 text-xs font-medium font-mono text-slate-700 dark:text-slate-300">{p.route_no || '-'}</span>
+                          <span className="px-2 py-0.5 rounded-md bg-slate-200/60 dark:bg-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300">{p.route_no || '-'}</span>
                         </td>
-                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs whitespace-nowrap">{p.start_km}</td>
-                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs whitespace-nowrap">{p.end_km}</td>
-                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs whitespace-nowrap">{calculatedLength} km</td>
+                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">{p.start_km}</td>
+                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">{p.end_km}</td>
+                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">{calculatedLength} km</td>
                         <td className="px-4 py-3 text-center whitespace-nowrap">
                           <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${getMixColorClasses(p.mix_category)}`}>
                             {p.mix_category || 'N/A'}
@@ -324,7 +309,7 @@ export default function Dashboard() {
                             </span>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs font-mono whitespace-nowrap">{p.lane_type || '-'}</td>
+                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">{p.lane_type || '-'}</td>
                         <td className="px-4 py-3 text-right sticky right-0 z-10 bg-white dark:bg-slate-900 border-l border-slate-200/80 dark:border-slate-800/80 shadow-xs">
                           <div className="flex justify-end gap-1.5">
                             <button
@@ -350,9 +335,9 @@ export default function Dashboard() {
             </table>
           ) : (
             <>
-            <table className="w-full text-left border-collapse">
+            <table className="font-noto-sans w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80 text-[11px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider sticky top-0 z-10 shadow-sm backdrop-blur-md">
+                <tr className="bg-slate-100/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80 text-[13px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider sticky top-0 z-10 shadow-sm backdrop-blur-md">
                   <th className="px-4 py-3.5">Rank</th>
                   <th className="px-4 py-3.5">Pavement Alternative</th>
                   <th className="px-4 py-3.5">Avg Initial Cost</th>
@@ -364,7 +349,7 @@ export default function Dashboard() {
                   <th className="px-4 py-3.5 text-center">20-Year Maintenance Schedule</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-sm">
+              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-[15px]">
                 {loading ? (
                   <tr><td colSpan="9" className="px-4 py-12 text-center text-slate-400">Loading LCCA calculations...</td></tr>
                 ) : lccaResults.length === 0 ? (
@@ -380,10 +365,10 @@ export default function Dashboard() {
                         ) : `#${r.ranking}`}
                       </td>
                       <td className="px-4 py-3.5 font-bold text-slate-900 dark:text-slate-100 whitespace-nowrap">{r.alternative}</td>
-                      <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 font-mono text-xs whitespace-nowrap">RM {r.initial_cost?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                      <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 font-mono text-xs whitespace-nowrap">RM {r.maintenance_cost?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                      <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 font-mono text-xs whitespace-nowrap">{r.cost_ratio}</td>
-                      <td className="px-4 py-3.5 font-extrabold text-cyan-600 dark:text-cyan-400 font-mono text-xs whitespace-nowrap">RM {r.npv?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">RM {r.initial_cost?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">RM {r.maintenance_cost?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">{r.cost_ratio}</td>
+                      <td className="px-4 py-3.5 font-extrabold text-cyan-600 dark:text-cyan-400 text-xs whitespace-nowrap">RM {r.npv?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                       <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 min-w-[140px] text-xs">{r.distress_level}</td>
                       <td className="px-4 py-3.5 text-slate-500 dark:text-slate-400 min-w-[220px] text-xs leading-relaxed">{r.remark}</td>
                       <td className="px-4 py-3.5 text-center">
@@ -412,49 +397,49 @@ export default function Dashboard() {
                 Sensitivity Analysis (NPV)
               </h3>
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden border border-slate-200 dark:border-slate-800">
+                <table className="font-noto-sans w-full text-left border-collapse bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden border border-slate-200 dark:border-slate-800">
                   <thead>
-                    <tr className="bg-slate-100/80 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 text-[11px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider">
+                    <tr className="bg-slate-100/80 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-700 text-[13px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider">
                       <th className="px-4 py-3.5 border-r border-slate-200 dark:border-slate-700">Asphalt Mix Alternatives</th>
                       <th className="px-4 py-3.5 text-center bg-blue-500/10 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300">NPV (3%)</th>
                       <th className="px-4 py-3.5 text-center bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300">NPV (4%)</th>
                       <th className="px-4 py-3.5 text-center bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300">NPV (5%)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-sm">
+                  <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-[15px]">
                     <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                       <td className="px-4 py-3 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">SFM</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,086,399.27</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,070,914.94</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,057,815.89</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,086,399.27</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,070,914.94</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,057,815.89</td>
                     </tr>
                     <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors bg-emerald-500/5 dark:bg-emerald-500/5">
                       <td className="px-4 py-3 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">
                         CRMA <span className="inline-block mt-1 text-[10px] text-emerald-600 dark:text-emerald-400 font-normal bg-emerald-500/10 px-1.5 py-0.5 rounded">*most cost-effective</span>
                       </td>
-                      <td className="px-4 py-3 text-emerald-700 dark:text-emerald-400 font-mono font-semibold text-xs text-center">RM 1,031,307.60</td>
-                      <td className="px-4 py-3 text-emerald-700 dark:text-emerald-400 font-mono font-semibold text-xs text-center">RM 1,023,616.00</td>
-                      <td className="px-4 py-3 text-emerald-700 dark:text-emerald-400 font-mono font-semibold text-xs text-center">RM 1,005,199.68</td>
+                      <td className="px-4 py-3 text-emerald-700 dark:text-emerald-400 font-semibold text-xs text-center">RM 1,031,307.60</td>
+                      <td className="px-4 py-3 text-emerald-700 dark:text-emerald-400 font-semibold text-xs text-center">RM 1,023,616.00</td>
+                      <td className="px-4 py-3 text-emerald-700 dark:text-emerald-400 font-semibold text-xs text-center">RM 1,005,199.68</td>
                     </tr>
                     <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                       <td className="px-4 py-3 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">LATEX</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,161,471.46</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,136,719.39</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,115,038.44</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,161,471.46</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,136,719.39</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,115,038.44</td>
                     </tr>
                     <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                       <td className="px-4 py-3 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">CMA</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,099,957.04</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,081,995.58</td>
-                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-mono text-xs text-center">RM 1,065,997.80</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,099,957.04</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,081,995.58</td>
+                      <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs text-center">RM 1,065,997.80</td>
                     </tr>
                     <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors bg-rose-500/5 dark:bg-rose-500/5">
                       <td className="px-4 py-3 font-bold text-slate-900 dark:text-white border-r border-slate-200 dark:border-slate-700">
                         AC <span className="inline-block mt-1 text-[10px] text-rose-600 dark:text-rose-400 font-normal bg-rose-500/10 px-1.5 py-0.5 rounded">*most uneconomical</span>
                       </td>
-                      <td className="px-4 py-3 text-rose-700 dark:text-rose-400 font-mono font-semibold text-xs text-center">RM 1,286,460.54</td>
-                      <td className="px-4 py-3 text-rose-700 dark:text-rose-400 font-mono font-semibold text-xs text-center">RM 1,263,978.72</td>
-                      <td className="px-4 py-3 text-rose-700 dark:text-rose-400 font-mono font-semibold text-xs text-center">RM 1,244,379.77</td>
+                      <td className="px-4 py-3 text-rose-700 dark:text-rose-400 font-semibold text-xs text-center">RM 1,286,460.54</td>
+                      <td className="px-4 py-3 text-rose-700 dark:text-rose-400 font-semibold text-xs text-center">RM 1,263,978.72</td>
+                      <td className="px-4 py-3 text-rose-700 dark:text-rose-400 font-semibold text-xs text-center">RM 1,244,379.77</td>
                     </tr>
                   </tbody>
                 </table>

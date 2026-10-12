@@ -56,13 +56,13 @@ Example structure:
     if (!text) return null;
     const lines = text.split("\n").filter(l => l.trim().length > 0);
     return (
-      <ul className="space-y-2 text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
+      <ul className="space-y-2 text-[15px] text-slate-800 dark:text-slate-200 leading-relaxed">
         {lines.map((line, idx) => {
           const cleanLine = line.replace(/^[-*•]\s*/, "");
           const parts = cleanLine.split(/(\*\*.*?\*\*)/g);
           return (
             <li key={idx} className="flex items-start gap-2">
-              <span className="text-cyan-600 dark:text-cyan-400 font-bold mt-0.5 text-xs">•</span>
+              <span className="text-cyan-600 dark:text-cyan-400 font-bold mt-0.5 text-[15px]">•</span>
               <div>
                 {parts.map((part, pIdx) => {
                   if (part.startsWith("**") && part.endsWith("**")) {
@@ -86,14 +86,14 @@ Example structure:
     <section className="p-5 rounded-2xl bg-cyan-50/50 dark:bg-cyan-950/20 border border-cyan-200/50 dark:border-cyan-800/50">
       <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
         <div>
-          <h3 className="text-sm font-bold text-cyan-900 dark:text-cyan-300 flex items-center gap-2 mb-1">
+          <h3 className="text-[15px] font-bold text-cyan-900 dark:text-cyan-300 flex items-center gap-2 mb-1">
             <Zap size={16} className="text-cyan-500 fill-current" />
             AI Prediction
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
+            <span className="text-[13px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30">
               LPU Accelerated
             </span>
           </h3>
-          <p className="text-xs text-cyan-700/80 dark:text-cyan-400/80">
+          <p className="text-[15px] text-cyan-700/80 dark:text-cyan-400/80">
             Estimate how long {materialName} may remain in good condition before significant maintenance.
           </p>
         </div>
@@ -101,7 +101,7 @@ Example structure:
           type="button"
           onClick={generatePrediction}
           disabled={loading}
-          className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 disabled:opacity-60 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+          className="px-4 py-2 bg-gradient-to-r from-cyan-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 disabled:opacity-60 text-white text-[15px] font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 whitespace-nowrap"
         >
           {loading ? <Loader2 size={14} className="animate-spin" /> : <Sparkles size={14} />}
           {loading ? "Generating..." : prediction ? "Generate Again" : "Generate Prediction"}
@@ -109,7 +109,7 @@ Example structure:
       </div>
 
       {error && (
-        <p role="alert" className="mt-3 p-3 rounded-lg bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400 text-xs">
+        <p role="alert" className="mt-3 p-3 rounded-lg bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400 text-[15px]">
           {error}
         </p>
       )}

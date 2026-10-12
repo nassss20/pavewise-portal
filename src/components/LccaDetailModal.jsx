@@ -337,12 +337,12 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-fade-in overflow-y-auto">
-      <div className="glass-panel w-full max-w-5xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="glass-panel font-noto-sans w-full max-w-5xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Modal Header */}
         <div className="p-6 border-b border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/80 flex items-center justify-between">
           <div className="flex items-center gap-3.5">
-            <span className={`px-3 py-1 rounded-full text-xs font-bold border ${data.badgeColor}`}>
+            <span className={`px-3 py-1 rounded-full text-[13px] font-bold border ${data.badgeColor}`}>
               Rank #{data.ranking}
             </span>
             <div>
@@ -365,26 +365,26 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
           {/* Key Metrics Summary Bar */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
-              <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block mb-1">
+              <span className="text-[15px] font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider block mb-1">
                 Average Initial Cost
               </span>
-              <p className="text-lg font-black font-mono text-slate-900 dark:text-white">
+              <p className="text-lg font-black text-slate-900 dark:text-white">
                 {formatCurrency(data.avgInitialCost)}
               </p>
             </div>
             <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20">
-              <span className="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wider block mb-1">
+              <span className="text-[15px] font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wider block mb-1">
                 Total Maintenance Cost
               </span>
-              <p className="text-lg font-black font-mono text-slate-900 dark:text-white">
+              <p className="text-lg font-black text-slate-900 dark:text-white">
                 {formatCurrency(data.avgMaintenanceCost)}
               </p>
             </div>
             <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">
+              <span className="text-[15px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider block mb-1">
                 Average Net Present Value (NPV)
               </span>
-              <p className="text-lg font-black font-mono text-emerald-600 dark:text-emerald-400">
+              <p className="text-lg font-black text-emerald-600 dark:text-emerald-400">
                 {formatCurrency(data.avgNpv)}
               </p>
             </div>
@@ -394,7 +394,7 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
 
           {/* Asset Selector Tabs */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+            <label className="block text-[15px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
               Select Representative Road Section:
             </label>
             <div className="flex flex-wrap gap-2">
@@ -402,7 +402,7 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
                 <button
                   key={idx}
                   onClick={() => setSelectedAssetIdx(idx)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                  className={`px-4 py-2 rounded-xl text-[15px] font-bold transition-all border ${
                     selectedAssetIdx === idx
                       ? 'bg-cyan-500 text-white border-cyan-500 shadow-md shadow-cyan-500/20'
                       : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-cyan-500/50'
@@ -417,16 +417,16 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
           {/* Section Schedule Header */}
           <div className="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
-              <h3 className="font-extrabold text-sm text-slate-900 dark:text-white">
+              <h3 className="font-extrabold text-[15px] text-slate-900 dark:text-white">
                 Road Section: {currentAsset.name}
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
-                Initial: <span className="font-mono font-semibold">{formatCurrency(currentAsset.initialCost)}</span> | Maintenance: <span className="font-mono font-semibold">{formatCurrency(currentAsset.maintCost)}</span>
+              <p className="text-[15px] text-slate-500 dark:text-slate-400">
+                Initial: <span className="font-semibold">{formatCurrency(currentAsset.initialCost)}</span> | Maintenance: <span className="font-semibold">{formatCurrency(currentAsset.maintCost)}</span>
               </p>
             </div>
             <div className="text-right">
-              <span className="text-xs text-slate-400 font-medium">Computed Section NPV</span>
-              <p className="text-base font-black font-mono text-cyan-600 dark:text-cyan-400">
+              <span className="text-[15px] text-slate-400 font-medium">Computed Section NPV</span>
+              <p className="text-[15px] font-black text-cyan-600 dark:text-cyan-400">
                 {formatCurrency(currentAsset.npv)}
               </p>
             </div>
@@ -434,9 +434,9 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
 
           {/* 20-Year Maintenance Schedule Table */}
           <div className="overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-slate-800/80">
-            <table className="w-full text-left border-collapse">
+            <table className="font-noto-sans w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100 dark:bg-slate-950 text-[11px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider border-b border-slate-200/80 dark:border-slate-800/80">
+                <tr className="bg-slate-100 dark:bg-slate-950 text-[13px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider border-b border-slate-200/80 dark:border-slate-800/80">
                   <th className="px-4 py-3">Calendar Year</th>
                   <th className="px-4 py-3">Cost Component Activity</th>
                   <th className="px-4 py-3">Assumed Cost Basis</th>
@@ -447,25 +447,25 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
                   <th className="px-4 py-3 text-right">Present Value NPV (RM)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-xs">
+              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-[15px]">
                 {currentAsset.schedule.map((item, i) => (
                   <tr key={i} className="hover:bg-slate-100/50 dark:hover:bg-slate-900/50 transition-colors">
-                    <td className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100 whitespace-nowrap font-mono">
+                    <td className="px-4 py-3 font-semibold text-slate-900 dark:text-slate-100 whitespace-nowrap">
                       {item.year}
                     </td>
                     <td className="px-4 py-3 font-medium text-slate-800 dark:text-slate-200 min-w-[180px]">
                       {item.activity}
                     </td>
-                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400 text-[11px]">
+                    <td className="px-4 py-3 text-slate-500 dark:text-slate-400">
                       {item.assumed}
                     </td>
-                    <td className="px-4 py-3 text-right font-mono font-semibold text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                    <td className="px-4 py-3 text-right font-semibold text-slate-700 dark:text-slate-300 whitespace-nowrap">
                       {formatCurrency(item.cost)}
                     </td>
-                    <td className="px-4 py-3 text-center font-mono text-slate-500">{item.rate}</td>
-                    <td className="px-4 py-3 text-center font-mono text-slate-500">{item.n}</td>
-                    <td className="px-4 py-3 text-center font-mono text-slate-500">{item.pf.toFixed(4)}</td>
-                    <td className="px-4 py-3 text-right font-mono font-bold text-cyan-600 dark:text-cyan-400 whitespace-nowrap">
+                    <td className="px-4 py-3 text-center text-slate-500">{item.rate}</td>
+                    <td className="px-4 py-3 text-center text-slate-500">{item.n}</td>
+                    <td className="px-4 py-3 text-center text-slate-500">{item.pf.toFixed(4)}</td>
+                    <td className="px-4 py-3 text-right font-bold text-cyan-600 dark:text-cyan-400 whitespace-nowrap">
                       {formatCurrency(item.npv)}
                     </td>
                   </tr>
@@ -480,7 +480,7 @@ export default function LccaDetailModal({ isOpen, onClose, alternativeKey }) {
         <div className="p-4 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/80 flex justify-end items-center">
           <button
             onClick={onClose}
-            className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-white text-xs font-bold rounded-xl transition-all shadow-md"
+            className="px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-white text-[15px] font-bold rounded-xl transition-all shadow-md"
           >
             Close
           </button>

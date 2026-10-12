@@ -96,9 +96,9 @@ export default function MaintenanceActivityModal({ isOpen, onClose, title = "Mai
         </div>
 
         {/* Top Control Bar inside Modal */}
-        <div className="px-6 py-3.5 bg-slate-50/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80 flex justify-between items-center">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-400">
-            <span>Total Scheduled Activities: <strong className="text-slate-900 dark:text-white font-mono">{activities.length}</strong></span>
+        <div className="font-noto-sans px-6 py-4 bg-slate-50/80 dark:bg-slate-950/80 border-b border-slate-200/80 dark:border-slate-800/80 flex justify-between items-center">
+          <div className="flex items-center gap-2 text-[13px] font-semibold text-slate-600 dark:text-slate-400">
+            <span>Total Scheduled Activities: <strong className="text-slate-900 dark:text-white">{activities.length}</strong></span>
           </div>
 
           <button
@@ -106,9 +106,9 @@ export default function MaintenanceActivityModal({ isOpen, onClose, title = "Mai
               setEditingRow(null);
               setIsEditModalOpen(true);
             }}
-            className="flex items-center gap-1.5 px-4 py-2 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold text-xs rounded-xl shadow-md shadow-cyan-500/20 transition-all shrink-0"
+            className="font-noto-sans flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold text-[13px] rounded-xl shadow-md shadow-cyan-500/20 transition-all shrink-0"
           >
-            <Plus size={16} />
+            <Plus size={18} />
             Add Activity
           </button>
         </div>
@@ -116,9 +116,9 @@ export default function MaintenanceActivityModal({ isOpen, onClose, title = "Mai
         {/* Modal Scrollable Table Area */}
         <div className="p-6 overflow-y-auto flex-1">
           <div className="overflow-x-auto rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs">
-            <table className="w-full text-left border-collapse min-w-[950px]">
+            <table className="font-noto-sans w-full text-left border-collapse min-w-[950px]">
               <thead>
-                <tr className="bg-slate-100 dark:bg-slate-950 text-[11px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider border-b border-slate-200/80 dark:border-slate-800/80 sticky top-0 z-20">
+                <tr className="bg-slate-100 dark:bg-slate-950 text-[13px] uppercase text-slate-500 dark:text-slate-400 font-bold tracking-wider border-b border-slate-200/80 dark:border-slate-800/80 sticky top-0 z-20">
                   <th className="px-4 py-3.5 w-24">YEAR</th>
                   <th className="px-4 py-3.5 min-w-[220px]">MAINTENANCE ACTIVITY</th>
                   <th className="px-4 py-3.5 min-w-[180px]">DISTRESS</th>
@@ -128,7 +128,7 @@ export default function MaintenanceActivityModal({ isOpen, onClose, title = "Mai
                   <th className="px-4 py-3.5 text-right sticky right-0 bg-slate-100 dark:bg-slate-950 min-w-[90px] border-l border-slate-200 dark:border-slate-800">ACTION</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-xs">
+              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-[15px]">
                 {activities.length === 0 ? (
                   <tr>
                     <td colSpan="7" className="px-4 py-12 text-center text-slate-400 font-medium">
@@ -138,7 +138,7 @@ export default function MaintenanceActivityModal({ isOpen, onClose, title = "Mai
                 ) : (
                   activities.map((item) => (
                     <tr key={item.id} className="hover:bg-slate-100/50 dark:hover:bg-slate-900/50 transition-colors">
-                      <td className="px-4 py-3.5 font-bold text-slate-900 dark:text-slate-100 whitespace-nowrap font-mono">
+                      <td className="px-4 py-3.5 font-bold text-slate-900 dark:text-slate-100 whitespace-nowrap">
                         {item.year}
                       </td>
                       <td className="px-4 py-3.5 font-semibold text-slate-800 dark:text-slate-200">
@@ -147,7 +147,7 @@ export default function MaintenanceActivityModal({ isOpen, onClose, title = "Mai
                       <td className="px-4 py-3.5 text-slate-600 dark:text-slate-300 text-xs">
                         {item.distress || '-'}
                       </td>
-                      <td className="px-4 py-3.5 font-mono font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">
+                      <td className="px-4 py-3.5 font-bold text-slate-800 dark:text-slate-200 whitespace-nowrap">
                         {formatCurrency(item.cost_rm)}
                       </td>
                       <td className="px-4 py-3.5 text-center whitespace-nowrap">

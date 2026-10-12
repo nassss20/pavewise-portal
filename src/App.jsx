@@ -39,24 +39,33 @@ function App() {
 
       {/* Navigation Bar */}
       {session && (
-        <nav className="border-b border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl px-6 py-3.5 sticky top-0 z-50 shadow-md shadow-slate-900/10 animate-fade-in">
-          <div className="w-full flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Logo" className="h-10 w-10 rounded-full object-cover shadow-sm" />
-            <p className="font-bold text-xl tracking-tight leading-none text-slate-900 dark:text-white">
+        <nav className="border-b border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl px-6 sm:px-8 py-5 sticky top-0 z-50 shadow-md shadow-slate-900/10 animate-fade-in">
+          <div className="w-full grid grid-cols-[1fr_auto_1fr] items-center">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <img src="/logo.png" alt="Logo" className="h-12 w-12 rounded-full object-cover shadow-sm sm:h-[60px] sm:w-[60px]" />
+            <p className="font-bold text-xl tracking-tight leading-none text-slate-900 dark:text-white sm:text-[24px]">
               Pave<span className="bg-gradient-to-r from-cyan-500 to-teal-500 bg-clip-text text-transparent">Wise</span>
             </p>
           </div>
-          
-          
-          <div className="flex items-center gap-3">
+
+          <Link
+            to="/dashboard"
+            aria-label="Dashboard"
+            aria-current={location.pathname === '/dashboard' ? 'page' : undefined}
+            className={`inline-flex items-center justify-center gap-2 rounded-xl p-2.5 font-semibold transition-colors sm:px-4 sm:py-3 ${location.pathname === '/dashboard' ? 'bg-zinc-200 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100' : 'text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800'}`}
+          >
+            <LayoutDashboard size={22} />
+            <span className="hidden sm:inline">Dashboard</span>
+          </Link>
+
+          <div className="flex items-center justify-self-end gap-2 sm:gap-3">
             <ThemeSwitcher />
             <button 
               onClick={handleLogout} 
-              className="flex items-center gap-2 px-3.5 py-2 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 rounded-xl transition-all font-medium text-sm border border-rose-200/50 dark:border-rose-900/30 shadow-sm"
+              className="flex items-center gap-2 px-3 py-3 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 rounded-xl transition-all font-medium text-base border border-rose-200/50 dark:border-rose-900/30 shadow-sm sm:px-4"
               title="Log Out"
             >
-              <LogOut size={16} />
+              <LogOut size={20} />
               <span className="hidden sm:inline">Log Out</span>
             </button>
           </div>
