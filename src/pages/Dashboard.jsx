@@ -163,7 +163,7 @@ export default function Dashboard() {
       <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center gap-4">
         <button
           onClick={handleAdd}
-          className="flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-cyan-500/25 border border-cyan-400/20 hover:scale-[1.02] active:scale-[0.98] text-xs sm:text-sm"
+          className="font-noto-sans flex items-center gap-2 px-5 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white text-[14px] font-semibold rounded-xl transition-all shadow-lg shadow-cyan-500/25 border border-cyan-400/20 hover:scale-[1.02] active:scale-[0.98]"
         >
           <Plus size={19} className="stroke-[2.5]" />
           Add New Road Record
