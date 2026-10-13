@@ -51,6 +51,14 @@ body {
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
 }
 
+.arcgis-map-frame {
+  border-color: rgba(212, 212, 216, 0.8);
+}
+
+.dark .arcgis-map-frame {
+  border-color: rgba(82, 82, 91, 0.8);
+}
+
 .glass-panel-interactive {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }

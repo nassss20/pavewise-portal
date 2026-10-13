@@ -12,7 +12,6 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
     length_km: '',
     mix_category: '',
     construction_year: new Date().getFullYear().toString(),
-    pavement_alternative: '',
     cost_rm: '',
     distress_1_type: 'None / Healthy (Tiada Kerosakan)',
     is_recurring: 'Tidak',
@@ -40,7 +39,6 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
         length_km: project.length_km || calcLength,
         mix_category: project.mix_category || '',
         construction_year: project.construction_year || '',
-        pavement_alternative: project.pavement_alternative || project.work_type || '',
         cost_rm: project.cost_rm !== undefined && project.cost_rm !== null ? project.cost_rm : '',
         distress_1_type: project.distress_1_type || project.current_condition || 'None / Healthy (Tiada Kerosakan)',
         is_recurring: project.is_recurring || 'Tidak',
@@ -59,7 +57,6 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
         length_km: '',
         mix_category: '',
         construction_year: new Date().getFullYear().toString(),
-        pavement_alternative: '',
         cost_rm: '',
         distress_1_type: 'None / Healthy (Tiada Kerosakan)',
         is_recurring: 'Tidak',
@@ -105,7 +102,6 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
       length_km: formData.length_km || calculatedLength,
       cost_rm: parseFloat(formData.cost_rm) || 0,
       construction_year: formData.construction_year ? parseInt(formData.construction_year, 10) : null,
-      work_type: formData.pavement_alternative,
       current_condition: formData.distress_1_type,
       latitude: formData.latitude !== '' && formData.latitude !== null ? parseFloat(formData.latitude) : null,
       longitude: formData.longitude !== '' && formData.longitude !== null ? parseFloat(formData.longitude) : null
@@ -274,33 +270,8 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               />
             </div>
 
-            {/* 7. WORK TYPE */}
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
-                Work Type
-              </label>
-              <input 
-                type="text" 
-                name="pavement_alternative" 
-                value={formData.pavement_alternative} 
-                onChange={handleChange} 
-                list="work-type-list"
-                placeholder="e.g. Mill & Pave, Regulate & Overlay" 
-                className="w-full px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all text-sm outline-none" 
-              />
-              <datalist id="work-type-list">
-                <option value="Mill & Pave" />
-                <option value="Regulate & Overlay" />
-                <option value="Regulate / Mill In Lay" />
-                <option value="Overlay" />
-                <option value="Major Rehabilitation & Patching" />
-                <option value="Corrective Maintenance" />
-                <option value="Routine Maintenance" />
-                <option value="Standard Resurfacing" />
-              </datalist>
-            </div>
 
-            {/* 8. INITIAL COST (RM) */}
+            {/* 7. INITIAL COST (RM) */}
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
                 Initial Cost (RM)
@@ -316,7 +287,7 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               />
             </div>
 
-            {/* 9. CURRENT CONDITION */}
+            {/* 8. CURRENT CONDITION */}
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
                 Current Condition
@@ -343,7 +314,7 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               </select>
             </div>
 
-            {/* 10. RECURRING DAMAGE (YES/NO) */}
+            {/* 9. RECURRING DAMAGE (YES/NO) */}
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
                 Recurring Damage (Yes / No)
@@ -359,7 +330,7 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               </select>
             </div>
 
-            {/* 11. LANE / DIRECTION */}
+            {/* 10. LANE / DIRECTION */}
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
                 Lane / Direction
@@ -374,7 +345,7 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               />
             </div>
 
-            {/* 12. WORK DESCRIPTION / YEARS PROGRAM */}
+            {/* 11. WORK DESCRIPTION / YEARS PROGRAM */}
             <div className="md:col-span-2">
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
                 Work Description / Years Program
@@ -389,7 +360,7 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               />
             </div>
 
-            {/* 13. LATITUDE */}
+            {/* 12. LATITUDE */}
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
                 Latitude
@@ -405,30 +376,13 @@ export default function ProjectModal({ isOpen, onClose, project, onSave }) {
               />
             </div>
 
-            {/* 14. LONGITUDE */}
-            <div>
+            {/* REMARKS */}
+            <div className="md:col-span-2">
               <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
-                Longitude
-              </label>
-              <input 
-                type="number" 
-                step="0.00000001" 
-                name="longitude" 
-                value={formData.longitude} 
-                onChange={handleChange} 
-                placeholder="e.g. 102.5888" 
-                className="w-full px-3.5 py-2.5 border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 transition-all text-sm outline-none font-mono" 
-              />
-            </div>
-
-            {/* 15. REMARKS */}
-            <div className="md:col-span-2 space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                 Remarks
               </label>
               <textarea
                 name="remarks"
-                rows={3}
                 value={formData.remarks}
                 onChange={handleChange}
                 placeholder="Enter remarks or additional notes..."

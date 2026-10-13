@@ -123,7 +123,6 @@ export default function Dashboard() {
     const matchSearch = !search ||
       (p.road_name?.toLowerCase().includes(search.toLowerCase())) ||
       (p.mix_category?.toLowerCase().includes(search.toLowerCase())) ||
-      (p.pavement_alternative?.toLowerCase().includes(search.toLowerCase())) ||
       (p.route_no?.toLowerCase().includes(search.toLowerCase()));
 
     const matchRoad = !filterRoad || p.road_name === filterRoad;
@@ -173,7 +172,7 @@ export default function Dashboard() {
 
 
       {/* ArcGIS Map Embedded */}
-      <div className="glass-panel rounded-2xl shadow-xl overflow-hidden border border-slate-200/80 dark:border-slate-800/80">
+      <div className="glass-panel arcgis-map-frame rounded-2xl shadow-xl overflow-hidden">
         <div className="h-[550px] w-full relative">
           <iframe
             src="https://geouitm.maps.arcgis.com/apps/dashboards/a39283d010a0452ca27094d5cd3caffa#"
@@ -264,7 +263,6 @@ export default function Dashboard() {
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[90px]">To (KM)</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[100px]">Length</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[130px] text-center">Pavement Mix</th>
-                  <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[160px]">Work Type</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[140px]">Initial Cost</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[180px]">Current Condition</th>
                   <th className="px-4 py-3.5 bg-slate-100 dark:bg-slate-900 min-w-[120px]">Recurring</th>
@@ -274,9 +272,9 @@ export default function Dashboard() {
               </thead>
               <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60 text-[15px]">
                 {loading ? (
-                  <tr><td colSpan="13" className="px-4 py-12 text-center text-slate-400">Loading road network registry...</td></tr>
+                  <tr><td colSpan="12" className="px-4 py-12 text-center text-slate-400">Loading road network registry...</td></tr>
                 ) : filteredProjects.length === 0 ? (
-                  <tr><td colSpan="13" className="px-4 py-12 text-center text-slate-400">No project records found.</td></tr>
+                  <tr><td colSpan="12" className="px-4 py-12 text-center text-slate-400">No project records found.</td></tr>
                 ) : (
                   filteredProjects.map((p, index) => {
                     const calculatedLength = p.length_km || (p.start_km !== undefined && p.end_km !== undefined ? Math.abs((parseFloat(p.end_km) || 0) - (parseFloat(p.start_km) || 0)).toFixed(2) : '-');
@@ -295,7 +293,6 @@ export default function Dashboard() {
                             {p.mix_category || 'N/A'}
                           </span>
                         </td>
-                        <td className="px-4 py-3 text-slate-600 dark:text-slate-300 font-medium text-xs whitespace-nowrap">{p.pavement_alternative || p.work_type || '-'}</td>
                         <td className="px-4 py-3 text-slate-700 dark:text-slate-200 font-semibold text-xs whitespace-nowrap">RM {p.cost_rm?.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         <td className="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs whitespace-nowrap">{p.distress_1_type || p.current_condition || '-'}</td>
                         <td className="px-4 py-3 text-xs font-medium whitespace-nowrap">

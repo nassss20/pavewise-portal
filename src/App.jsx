@@ -39,7 +39,7 @@ function App() {
 
       {/* Navigation Bar */}
       {session && (
-        <nav className="border-b border-slate-300 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl px-6 sm:px-8 py-5 sticky top-0 z-50 shadow-md shadow-slate-900/10 animate-fade-in">
+        <nav className="border-b border-slate-300 dark:border-slate-800 bg-white/50 dark:bg-slate-900/90 backdrop-blur-2xl px-6 sm:px-8 py-5 sticky top-0 z-50 shadow-md shadow-slate-900/10 animate-fade-in">
           <div className="w-full grid grid-cols-[1fr_auto_1fr] items-center">
           <div className="flex items-center gap-2 sm:gap-3">
             <img src="/logo.png" alt="Logo" className="h-12 w-12 rounded-full object-cover shadow-sm sm:h-[60px] sm:w-[60px]" />
@@ -62,7 +62,7 @@ function App() {
             <ThemeSwitcher />
             <button 
               onClick={handleLogout} 
-              className="flex items-center gap-2 px-3 py-3 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 rounded-xl transition-all font-medium text-base border border-rose-200/50 dark:border-rose-900/30 shadow-sm sm:px-4"
+              className="h-[50px] flex items-center gap-2 px-3 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/30 dark:hover:bg-rose-900/50 text-rose-600 dark:text-rose-400 rounded-xl transition-all font-medium text-base border border-rose-200/50 dark:border-rose-900/30 shadow-sm sm:px-4"
               title="Log Out"
             >
               <LogOut size={20} />

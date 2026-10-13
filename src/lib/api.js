@@ -80,7 +80,6 @@ export const createProject = async (projectData) => {
       const safePayload = { ...payload };
       delete safePayload.construction_year;
       delete safePayload.remarks;
-      delete safePayload.work_type;
       delete safePayload.current_condition;
 
       const { data: retryData, error: retryError } = await supabase
@@ -111,7 +110,6 @@ export const updateProject = async (projectData) => {
       const safePayload = { ...payload };
       delete safePayload.construction_year;
       delete safePayload.remarks;
-      delete safePayload.work_type;
       delete safePayload.current_condition;
 
       const { data: retryData, error: retryError } = await supabase
