@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { checkSession, login as apiLogin, logout as apiLogout } from '../lib/api';
+import { supabase, login as apiLogin, logout as apiLogout } from '../lib/api';
 
 const AuthContext = createContext();
 
@@ -8,22 +8,30 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check session on load
-    checkSession()
-      .then(user => {
-        setSession(user);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Session check error:", err);
-        setSession(null);
-        setLoading(false);
-      });
+    // Check initial session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setLoading(false);
+    }).catch(err => {
+      console.error("Session check error:", err);
+      setSession(null);
+      setLoading(false);
+    });
+
+    // Listen to Supabase auth events (login, logout, token refresh)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      setLoading(false);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   const login = async (email, password) => {
     const data = await apiLogin(email, password);
-    setSession(data.user);
+    setSession(data.session);
     return data;
   };
 
@@ -33,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ session, loading, login, logout }}>
+    <AuthContext.Provider value={{ session, user: session?.user, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

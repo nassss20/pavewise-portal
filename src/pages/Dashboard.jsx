@@ -203,12 +203,6 @@ export default function Dashboard() {
             >
               Life Cycle Cost Analysis (LCCA)
             </button>
-            <button
-              onClick={() => setIsMaintPopUpModalOpen(true)}
-              className="font-noto-sans px-4 py-2 rounded-lg text-[13px] font-semibold transition-all whitespace-nowrap text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-700/50"
-            >
-              Maintenance Activity
-            </button>
           </div>
 
           {activeTab === 'registry' && (
